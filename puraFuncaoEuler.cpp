@@ -3,7 +3,7 @@
 
 using namespace std;
 
-double fatorial(int n){
+double fatorial(double n){
     double f = 1;
     for(int i = 1; i<=n; i++){
         f*=i;
@@ -11,13 +11,17 @@ double fatorial(int n){
     return f;
 }
 
-double euler(int n){
+double euler(double n){
 
     double e = 0;
+    if(n == 0 or n == 1){
+        e = 1 + (1/fatorial(1));
+    }else{
+
     for(int i=0;i<=n;i++){
-        e =  1 + (1/fatorial(1)) + (1/fatorial(n));
+        e += (1/fatorial(i));
     }
-    
+    }
 
     return e;
 }
