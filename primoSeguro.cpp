@@ -9,7 +9,7 @@ int main(){
     cin>>x;
     cin>>y;
 
-    for(int i = x+1; i < y; i++){
+    for(int i = x; i <= y; i++){
         int flag = 1;
         for(int j = 2; j < i; j++){
             if(i%j==0){
