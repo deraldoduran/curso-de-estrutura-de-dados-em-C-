@@ -97,7 +97,7 @@ int main(){
     //somaLinha(vetl,9);
 
 
-    printvet(vetl,9);
+    /*printvet(vetl,9);
     cout<<"foi o vetor l"<<std::endl;
     cout<<"\n";
 
@@ -105,6 +105,13 @@ int main(){
     cout<<somaLinha(vetl,9)<<std::endl;
     cout<<somacoluna(vetl,9)<<std::endl;
     cout<<somadiagonal(vetl,9)<<std::endl;
+    */
+
+   if(somadiagonal(vetl,9) and somaLinha(vetl,9) and somacoluna(vetl,9)){
+       cout<<"sim"<<std::endl;
+   }else{
+       cout<<"nao"<<std::endl;
+   }
 
 
     return 0;
