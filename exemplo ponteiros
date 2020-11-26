@@ -1,0 +1,93 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+	
+	int a = 23;
+	
+	
+   
+    
+	
+	int *p1 = NULL;
+	int *p2 = NULL;
+	
+	cout << "valor de a: "<< a << "\n";
+	
+	
+	cout << "\n"; // quebra de linha
+	
+	p1 = &a; // a variavel p1, que é um ponteiro está recebendo o endereço da variável "a", usamos o operador '&' para isso.
+	
+	cout << "*p1 = " << *p1 << "\n"; //valor dentro do endereço que  p1 aponta ( para mostrarmos e usarmos o valor que está  sendo armazenado
+									// em p1, usamos o '*' para acessar os valores, caso o contrário, estaremos usando o seu endereço (hexa)
+	
+	cout << "p1 = "<< p1 << "\n"; // endereço guardado (hexadecimal) sem o '*' antes do p1, estamos trabalhando com o endereço de memoria do pc
+	
+	
+	p2 = p1; // agora estamos fazendo um ponteiro 'p2' receber o endereço de 'p1', ou seja, agora 'p2' está procurando coisas na memoria do 'p1'
+	
+	
+	cout << "Ponteiro p2 apontando para o ponteiro p1" << "\n";
+	
+	cout << "*p2 = "<< *p2 << "\n";
+	cout << "p2 = " << p2 << "\n";
+	
+	cout << "\n";
+	
+	// agora vamos trabalhar com ponteiros e vetores
+	// um vetor já é um ponteiro, só que a gente não declara ele como *v[x]
+	// isso é redundante, a linguagem já faz isso sozinha
+	// quando declaramos v[2], ele aponta pra um pedaço de kit kat, que tem no maximo y bytes de pedaços
+	// confuso ?
+	// lembra que o int declara uma variável com 4 bytes ? e quando fazemos um vetor int de x tamanho, esse x é multiplicado por 4
+	// ou seja, int v[x], x = 2, v[2] = dois pedaço de kit kat, ou 2 x 4 bytes...
+	// mas pra que saber esses bytes?
+	// quando a gente declara o vetor, ele aponta um total de pedaços de kit kat, ou bytes, a linguagem escolhe um lugar na memoria ram e aloca 
+	// ela para um vetor... tipo, a memoria tem o espaço a1b2, a2b3.... cada um deles com o espaço de 4 bytes, pq a gente declarou um int v[]
+	// então o vetor ta apontando pro primeiro kitkat, o a1b2, e ele vai atéééé o a2b3, que é o final do vetor[2].
+	// agora, vamos tentar criar um vetor sem usar o método normal
+	// mas para isso, vou trazer um pouco de alocação dinamica, n se assusta, nesse momento eu nem lembro também KKKK, mas uma pesquisada rápida resolve
+	// pronto, to preparado
+	
+	cout << "Escreva um tamanho para um vetor qualquer: ";
+	
+	int tam = 0; // variável que vai receber o valor do usuário
+   
+    cin >> tam;
+    
+    int *pontVet = new int[tam]; //declaração de um ponteiro dinâmico, em c++ a gente precisa usar ponteiro obrigatoriamentente
+								 // se quisermos fazer um vetor que tenha seu tamanho dito durante a execução do programa
+								 // para alocar a memoria usamos o operador new + tipo de dado + [valor(pode ser uma variável)]
+	
+    cout << "-------- digitar os valores do vetor --------\n";
+   
+    for(int i = 0; i < tam; i++){
+	  cout << "digite o valor na posição " << i + 1 << ": ";
+	  cin >> pontVet[i]; 
+    }
+   
+    cout << "valores digitados: \n";
+   
+    for(int i = 0; i < tam; i++){
+	  cout << pontVet[i] << " "; 
+	  
+    }
+    
+    cout << "\n";
+   
+  
+   
+    for(int i = 0; i < tam; i++){
+	   cout << "Endereço do vetor nº" << i+1 << " ";
+	
+	  
+	  cout << &pontVet[i] << "\n"; 
+	  
+    }
+
+
+
+ return 0;
+}
