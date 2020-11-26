@@ -14,12 +14,18 @@ void alimentamat(int **m, int l, int c){
     }
 }
 
-void printmat(int **m, int l, int c)
+void printmat1(int **m, int l, int c){
+    for(int i = 0; i<l; i++){
+        for(int j =0; j<c; j++){
+            cout<< m[i][j];
+        }
+    }
+}
 
 void printmat(int **n, int l, int c){
     for(int i = 0; i<l; i++){
         for(int j = 0; j < c; j++){
-            cout<<"matriz :"<< n[l][c]<<"\t";
+            cout<< n[i][j]<<"\t";
         }
     }
 }
@@ -94,7 +100,7 @@ int main(){
     const int l = 3;
     const int c = 3;
 
-    int mat[l][c] ;
+    int mat[l][c] = {1,2,2,4,5,6,7,8,8}; //essa matriz a gente nao consegue chamar na funcao
     int vetl[9];
     int vetc[c];
 
@@ -107,6 +113,9 @@ int main(){
             cin>>matriz[i][j];
         }
     }
+    printmat1(matriz,l,c);
+    alimentamat(matriz,l,c);
+    printmat(matriz,l,c);
 
     //alimentavet(vetl,9);
     //alimentavet(vetc, c);
