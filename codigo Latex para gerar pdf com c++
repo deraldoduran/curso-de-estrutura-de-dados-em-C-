@@ -1,0 +1,54 @@
+\usepackage{listings}
+\lstset{
+	language = c++,
+	basicstyle=\\ttfamily\small,
+	keywordstyle=\color{blue},
+	stringstyle=\color{green},
+	commentstyle=\color{red},
+	extendschars=true,
+	showspaces=false,
+	showstringspaces=false,
+	numbers=left,
+	numberstyle=\tiny,
+	breaklines=true,
+	backgroundcolor=\color{green!10},
+	breakautoident=true,
+	captionpos=b,
+	xleftmargin=0pt,
+}
+\pagestyle{empty}
+\begin{document}
+\begin{lstlisting}
+
+
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    int nperfeito=28, l = 0, soma=0;
+    bool inc = true;
+ 
+
+    while(inc ==true){
+        l++;
+        nperfeito++;
+        if(nperfeito%l == 0){
+            soma+=l;
+
+        }if(soma == nperfeito){
+            inc = false;
+
+        }
+
+
+    }
+
+    cout<<"o numero perfeito eh: "<<nperfeito<<std::endl;
+    return 0;
+}
+
+
+\end{lstlisting}
+
+\end{document}
