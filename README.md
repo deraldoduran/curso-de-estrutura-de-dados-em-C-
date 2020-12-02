@@ -1,1 +1,1 @@
-# curso-de-estrutura-de-daos-em-C-
+# curso-de-estrutura-de-dados-em-C-
