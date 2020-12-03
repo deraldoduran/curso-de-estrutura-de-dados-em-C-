@@ -1,0 +1,32 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	char vet[] {"ana maria"};
+	char *p = vet;
+	
+	cout << (void *) p << endl; // imprime endereco armazenado na variavel p
+	
+	// imprime todos os caracteres comecando a partir de vet[0] ate encontrar um '\0'
+	cout << vet << endl;
+	
+	// imprime todos os caracteres comecando em p ate encontrar um '\0'
+	cout << p << endl; 
+	
+	// Imprime a string armazenada no vetor vet
+	for(int i = 0; *(p+i) != '\0'; i++)
+		cout << *(p+i);
+	cout << endl;
+	
+	// Imprime a string armazenada no vetor vet 
+	while(*p != '\0') {
+		cout << *p;
+		p++;
+	} // ao final desta linha p nao aponta mais para o primeiro caractere de vet, ele aponta para o caractere '\0'
+	cout << endl; 
+	
+	cout << "novo caractere para o qual p aponta: " << *p << endl;
+	
+	return 0;
+}
