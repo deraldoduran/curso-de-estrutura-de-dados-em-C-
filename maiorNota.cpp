@@ -14,8 +14,8 @@ void ler(Aluno *a, int t){
     
     for(int i=0;i<t;i++){
        
-          cin.ignore();
-        std::getline (std::cin,a[i].nome);
+        //cin.ignore();
+        std::cin>>a[i].nome;
         
 
         cin>>a[i].matricula;
@@ -25,13 +25,14 @@ void ler(Aluno *a, int t){
         cin>>a[i].disciplina;
          
         cin>>a[i].nota;
+         cin.ignore();
         
     }
 }
 
 void compara(Aluno *a, int t){
     if(a[0].nota == a[1].nota){
-        cout<<a[0].nome<<" "<<"e"<<" "<<a[1].nome<<std::fixed<<std::setprecision(1)<<a[1].nota<<std::endl;
+        cout<<a[0].nome<<" "<<"e"<<" "<<a[1].nome<<" "<<","<<" "<<std::fixed<<std::setprecision(1)<<a[1].nota<<std::endl;
     }else if(a[1].nota>a[0].nota){
         cout<<a[1].nome<<""<<" , "<<""<<std::fixed<<std::setprecision(1)<<a[1].nota<< endl;
     }else if(a[0].nota>a[1].nota) {
