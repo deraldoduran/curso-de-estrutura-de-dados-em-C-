@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+String veiculo = "carro";
+String *pv;
+
+pv = &veiculo;//ponteiro recebe o valor do endereço da variavel veiculo
+
+cout<<pv<<"\n"<<&veiculo;// vai imprimir o endereço onde esta armazenado o valor da variavel veiculo tanto em pv quanto em &veiculo
+
+*pv="moto"; // vai por o valor moto no endereço de veiculo
+
+cout<<*pv<<veiculo; //vai imprimir moto nos dois
+
+return 0;
+}
