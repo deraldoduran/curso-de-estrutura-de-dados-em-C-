@@ -1,0 +1,56 @@
+# include <iostream>
+using namespace std;
+
+/*Questão 02. Faça  uma  função  que  receba  um  valor N  e  crie  dinamicamente  
+um  vetor  de N elementos  e  retorne  um  ponteiro.  
+Crie  uma  função  que  receba  um  ponteiro  para  um vetor  e  um  valor N  e  imprima  
+os N  elementos  desse  vetor.  Construa  também  uma função que receba um ponteiro para um vetor 
+e libere esta área de memória. Ao final, crie uma função principal que leia um valor N 
+e chame a função criada acima. Depois, a função principal deve ler os N elementos desse vetor. 
+Então, a função principal deve chamar a função de impressão dos N elementos do vetor criado e, 
+finalmente, 
+liberar a memória alocada através da função criada para liberação.*/
+
+int funcaoCriaVetorDinamico (int *v, int n){
+
+    return v[n];
+}
+
+void imprimeVetor(int *v, int n){
+    for(int i = 0; i<n; i++){
+        cout<<v[i]<<endl;
+    }
+}
+
+/*void recebePonteirodeVetoreLiberaMemoria(int *v, int n){
+    v = nullptr;
+    delete v;
+
+}
+deu esse erro!!!
+
+eu@eu-EasyNote-TE11BZ:~/Documents/src/exercicios$ g++ -Wall exe02.cpp -o tarefa2
+exe02.cpp:26:5: warning: identifier ‘nullptr’ is a keyword in C++11 [-Wc++0x-compat]
+     v = nullptr;
+     ^
+exe02.cpp: In function ‘void recebePonteirodeVetoreLiberaMemoria(int*, int)’:
+exe02.cpp:26:9: error: ‘nullptr’ was not declared in this scope
+     v = nullptr;
+         ^
+exe02.cpp: In function ‘int main()’:
+exe02.cpp:34:41: error: expected primary-expression before ‘]’ token
+     int *vetor = new (std::nothrow) int[];*/
+
+int main(){
+    int n;
+    cin>>n;
+    int *vetor = new (std::nothrow) int[n];
+    for(int i =0; i<n; i++){
+        cin>>vetor[i];
+    }
+
+    imprimeVetor(vetor, n);
+   // recebePonteirodeVetoreLiberaMemoria(vetor, n);
+
+    return 0;
+}
