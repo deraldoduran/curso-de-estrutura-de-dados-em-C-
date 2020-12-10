@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int *myPointer;
+   myPointer = new int;
+   *myPointer = 10;
+   cout << "O valor de myPointer eh " << *myPointer << endl;
+   delete myPointer;
+   *myPointer = 5; //Acesso indevido a uma área não identificada.(Lembre-se que o ponteiro perdeu o valor válido de memória que apontava antes do '''delete'''. Agora a área de memória não pertence mais ao programa.)
+   cout << "O valor de myPointer e " << *myPointer << endl;
+   
+   return 0;
+}
