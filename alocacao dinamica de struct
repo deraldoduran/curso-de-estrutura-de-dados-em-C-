@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+
+struct pessoa {
+   char nome[50];
+   int idade;
+};
+
+int main()
+{
+   // Aloca memória para todos os campos da estrutura 'pessoa'.
+   pessoa *p = new (std::nothrow) pessoa;
+   
+   // Encerra programa se não conseguir alocar memória.
+   if (p == nullptr) {
+      std::cout << "Erro: não foi possível alocar memória.";
+      return 1;
+   }
+   
+   // Acesso aos campos da estrutura.
+   strcpy(p->nome, "Joao da Silva");
+   p->idade = 20;
+   std::cout << p->nome << " " << p->idade << std::endl; 
+   
+   // Libera memória alocada.
+   delete p;
+   
+   return 0;
+}
