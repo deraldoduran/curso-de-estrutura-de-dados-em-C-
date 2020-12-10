@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int *myPointer;
+   myPointer = new int;
+   *myPointer = 10;
+   cout << "O valor de myPointer eh " << *myPointer << endl;
+   delete myPointer;
+   myPointer = nullptr;
+   *myPointer = 5; //Essa instrução vai causar uma "run-time exception", agora.
+   cout << "O valor de myPointer e " << *myPointer << endl;
+   
+   return 0;
+}
