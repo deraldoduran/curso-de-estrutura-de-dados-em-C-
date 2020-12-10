@@ -1,0 +1,30 @@
+# include <iostream>
+using namespace std;
+
+/*Questão 04. Faça um programa que leia um valor inteiro N não negativo. 
+Se o valor de N for inválido, o usuário deverá digitar outro até que ele seja válido (ou seja, positivo). Em seguida, leia um vetor V contendo N posições de inteiros, em que cada valor deverá ser maior ou igual a 2. 
+Esse vetor deverá ser alocado dinamicamente.*/
+
+int vetorAlocadoDinamicamente(int n){
+     int *v = new (std::nothrow) int[n];
+    return *v;
+}
+
+int main(){
+    int *vetor;
+    int n;
+    cin>>n;
+    if(n>0){
+        vetor = &vetorAlocadoDinamicamente( n);
+
+    }else{
+        cout<<"digite um numero inteiro positivo"<<endl;
+        cout<<"digite novo numero"<<endl;
+        cin>>n;
+    }
+    
+    for(int i=0;i<n;i++){
+        cout<<vetor[i]<<endl;
+    }
+    return 0;
+}
