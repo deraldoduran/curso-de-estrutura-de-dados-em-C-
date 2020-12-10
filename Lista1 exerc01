@@ -1,0 +1,65 @@
+# include <iostream>
+using namespace std;
+
+/*Questão 01. Faça um programa que leia um valor N e crie dinamicamente um vetor de N elementos e 
+passe  esse  vetor  para  uma  função  que  vai  ler  os  elementos  desse  vetor.  
+Depois,  no programa  principal,  o  vetor  preenchido  deve  ser  impresso.  
+Além  disso,  antes  de finalizar o programa, deve-se liberar a área de memória alocada.*/
+
+void lerVetor(int *v, int s){
+    for(int i=0; i<s; i++){
+        cin>>v[i];
+    }
+
+}
+
+
+int main(){
+    int n;
+    cin>>n;
+    int *vetor = new (std::nothrow) int[n];
+   /* if(vetor == nullptr){
+        cout<<"erro nao foi possivel alocar memoria"<<endl;
+        return 1;
+    }
+    deu esse erro!!!!
+
+    eu@eu-EasyNote-TE11BZ:~/Documents/src/exercicios$ g++ -Wall exe01.cpp -o exe1
+exe01.cpp:21:5: warning: identifier ‘nullptr’ is a keyword in C++11 [-Wc++0x-compat]
+     if(vetor == nullptr){
+     ^
+exe01.cpp: In function ‘int main()’:
+exe01.cpp:21:17: error: ‘nullptr’ was not declared in this scope
+     if(vetor == nullptr){
+                 ^
+exe01.cpp:31:13: error: ‘nullptr’ was not declared in this scope
+     vetor = nullptr;*/
+    lerVetor(vetor,n);
+    for(int i = 0; i<n; i++){
+        cout<<vetor[i]<<endl;
+    }
+
+    delete vetor;
+    /*vetor = nullptr;
+
+    deu esse erro!!!
+
+    eu@eu-EasyNote-TE11BZ:~/Documents/src/exercicios$ g++ -Wall exe01.cpp -o exe1
+exe01.cpp:43:5: warning: identifier ‘nullptr’ is a keyword in C++11 [-Wc++0x-compat]
+     vetor = nullptr;
+     ^
+exe01.cpp: In function ‘int main()’:
+exe01.cpp:43:13: error: ‘nullptr’ was not declared in this scope
+     vetor = nullptr;*/
+
+     /*vetor == null;
+
+     deu esse erro!!!
+
+     eu@eu-EasyNote-TE11BZ:~/Documents/src/exercicios$ g++ -Wall exe01.cpp -o exe1
+exe01.cpp: In function ‘int main()’:
+exe01.cpp:55:15: error: ‘null’ was not declared in this scope
+      vetor == null;*/
+
+    return 0;
+}
