@@ -1,0 +1,31 @@
+# include <iostream>
+using namespace std;
+
+/*Questão 03. Crie uma estrutura chamada Cadastro. 
+Essa estrutura deve conter o nome, a idade e o endereço de uma pessoa. 
+Agora, escreva uma função que receba um inteiro positivo N 
+e retorne o ponteiro para um vetor de tamanho N, alocado dinamicamente, dessa estrutura. 
+Solicite também que o usuário digite os dados desse vetor dentro da função.*/
+
+struct Cadastro
+{
+    string nome;
+    int idade;
+    string endereco;
+};
+
+int recebeInteiroDevolveVetor(int n){
+    int *v= new (std::nothrow) int [n];
+    for(int i =0; i<n; i++){
+        cin>>v[i];
+    }
+    return *v;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    recebeInteiroDevolveVetor(n);
+
+    return 0;
+}
