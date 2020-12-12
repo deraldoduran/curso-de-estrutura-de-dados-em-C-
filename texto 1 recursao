@@ -1,0 +1,140 @@
+
+
+Análise de Algoritmos | Aulas | Dicionário | Índice
+Recursão
+
+"Ao tentar resolver o problema,
+encontrei obstáculos dentro de obstáculos.
+Por isso, adotei uma solução recursiva."
+
+— aluno S.Y., 1998
+
+"To understand recursion,
+we must first understand recursion."
+
+— anônimo
+
+A ideia de qualquer algoritmo recursivo para um problema é igual à de uma prova por indução matemática:
+
+    se a instância que queremos resolver é pequena, resolva-o diretamente, como puder;
+    se a instância é grande, reduza-a a uma instância menor do mesmo problema;
+    depois de resolvida a instância menor, volte à instância original. 
+
+Para que essa ideia possa ser aplicada com sucesso, é preciso que o problema tenha uma certa "estrutura recursiva", ou seja, que a solução de cada instância contenha soluções de instâncias menores. (Mais precisamente, soluções de "subinstâncias" da instância.) Muitos problemas computacionais têm essa "estrutura recursiva".
+
+Um programa recursivo precisa apenas mostrar duas coisas ao computador: 1. como reduzir uma instância a uma subinstância e 2. como obter uma solução da instância a partir da solução da subinstância. O computador cuida do resto!
+Exemplo 1: soma recursiva
+
+Escreva um algoritmo recursivo que calcule a soma dos elementos de um vetor A[1 .. n]. Antes de escrever código, é preciso responder a duas perguntas:
+
+    Qual a entrada e qual a saída de nosso algoritmo? Resposta: nosso algoritmo deve receber um número n e um vetor A e deve devolver um único número, que deve ser igual à soma dos elementos de A[1 .. n].
+    Para quais valores da entrada o problema faz sentido? Resposta: nosso problema faz sentido para n ≥ 0 e qualquer A[1 .. n]. (Se n = 0, a solução é 0.) 
+
+Respondidas essas perguntas, é fácil escrever o algoritmo. (Note como a instância n = 0 é tratada com naturalidade.)
+Soma (n, A)
+1 se n = 0
+2 s := 0
+3 senão s := Soma (n−1, A) + A[n]
+4 devolva s
+
+O algoritmo acima faz a soma "da esquerda para a direita". Como você faria a coisa para somar "da direita para esquerda"? Para fazer isso é preciso generalizar o problema. O problema generalizado tem dados  n, A, e k ≥ 1  e pede a soma  A[k] + ··· + A[n].  Eis o algoritmo:
+Soma-Dir-Esq (k, n, A)
+1 se k > n
+2 s := 0
+3 senão s := A[k] + Soma-Dir-Esq (k+1, n, A)
+4 devolva s
+Exemplo 2: máximo de um vetor
+
+Escreva um algoritmo para o seguinte problema: encontrar o valor do maior elemento de um vetor A[1 .. n] de inteiros. (A rigor, eu deveria ter dito "encontre o valor de um elemento máximo", pois o vetor pode ter mais que um elemento de valor máximo.)  É claro que o problema só faz sentido se n ≥ 1.
+
+Nosso primeiro algoritmo é iterativo:
+Max (A, n)
+1 x := A[1]
+2 para i := 2 até n
+3 se A[i] > x
+4 x := A[i]
+5 devolva x
+
+Agora, uma versão recursiva do mesmo algoritmo:
+Max-R (A, n)
+1 se n = 1
+2 devolva A[1]
+3 senão x := Max-R (A, n−1)
+4 se x < A[n]
+5 devolva A[n]
+6 senão devolva x
+
+Erro dos parâmetros misteriosos:  Ao escrever um algoritmo recursivo, algumas pessoas cometem o erro dos parâmetros misteriosos. Essas pessoas inventam parâmetros que não estão no enunciado do problema, e escrevem
+Max-Misterioso (A, max, i, n)
+1 se i > n
+2 devolva max
+3 senão se A[i] > max
+4 max := A[i]
+4 devolva Max-Misterioso (A, max, i+1, n)
+
+Para piorar, essas pessoas tentam explicar as coisas dizendo que "a primeira chamada deve ser Max-Misterioso (A, A[1], 2, n)". Ora, um algoritmo recursivo não tem primeira chamada, nem segunda chamada, nem última chamada.
+
+Só há uma maneira de salvar alguma coisa desse desastre: explicar ao leitor o que o algoritmo faz. Eis uma explicação correta:
+
+O algoritmo Max-Misterioso recebe um vetor A e números  max, i ≥ 1 e n, e devolve o valor de um elemento máximo do conjunto  { max, A[i], A[i+1], … , A[n] }.
+Exemplo 3: busca sequencial
+
+Escreva um algoritmo iterativo e um recursivo para o seguinte problema: verificar se um dado inteiro x é elemento do vetor A[1 .. n].
+
+O seguinte algoritmo devolve SIM se x está em A[1 .. n] e devolve NÃO em caso contrário. Note que o problema faz sentido com qualquer n ≥ 0 (e o algoritmo trata da instância n = 0 com naturalidade):
+Decide (A, n, x)
+1 i := 1
+2 enquanto i ≤ n e A[i] ≠ x
+3 i := i+1
+4 se i > n devolva NÃO
+5 senão devolva SIM
+
+Eis uma versão recursiva do mesma algoritmo:
+Decide-R (A, n, x)
+1 se n = 0
+2 devolva NÃO
+3 senão se A[n] = x
+4 devolva SIM
+5 senão devolva Decide-R (A, n−1, x)
+Exercício 1
+
+    Escreva e analise um algoritmo recursivo que receba dois vetores A[1 .. n] e B[1 .. n] e decida se existe um índice i tal que A[i] = B[i].
+    ★ Considere o seguinte problema: decidir se um vetor B[1 .. k] é uma subsequência de um vetor A[1 .. n]. (Por exemplo, (5, 6, 4) é subsequência de (9, 5, 6, 3, 9, 6, 4, 7).) Escreva um algoritmo recursivo eficiente para resolver o problema. Prove que o seu algoritmo está correto. 
+
+Exemplo 4: busca em vetor ordenado
+
+Escreva um algoritmo iterativo e um recursivo para o seguinte problema: dado um número x e um vetor crescente A[1 .. n], encontrar j tal que
+
+A[j−1] < x ≤ A[j].
+
+(Note o "<" e o "≤", cada um no seu lugar; se tivéssemos dois "<", nem toda instância do problema teria solução.) A solução j pode ter qualquer valor no intervalo 1 .. n+1, uma vez que x pode ser menor que A[1] e maior que A[n]. (Se isso ajudar, você pode imaginar que A[0] = −∞ e A[n+1] = +∞.)  O seguinte algoritmo resolve o problema e cuida dos valores extremos j = 1 e j = n+1 de maneira natural e indolor:
+Encontra (A, n, x)
+1 j := 1
+2 enquanto j ≤ n e A[j] < x
+3 j := j+1
+4 devolva j
+
+Eis uma versão recursiva do algoritmo:
+Encontra-R (A, n, x)
+1 se n = 0
+2 devolva 1
+3 senão se A[n] < x
+4 devolva n+1
+5 senão devolva Encontra-R (A, n−1, x)
+
+Como muita gente sabe, o algoritmo de busca binária é muito mais eficiente que qualquer dos algoritmos acima.
+Exercício 2
+
+    Escreva e analise um algoritmo de busca binária para o problema discutido acima. Faça duas versões: uma iterativa e uma recursiva.
+    ★ Escreva e analise um algoritmo recursivo que calcule ⌊lg n⌋.
+    Escreva um algoritmo recursivo que calcule ⌈lg n⌉ . 
+
+Veja o meu Minicurso de Análise de Algoritmos, 2009.
+
+Veja o verbete Recursion na Wikipedia.
+
+www.ime.usp.br/~pf/analise_de_algoritmos/
+Atualizado em 2020-08-20
+Paulo Feofiloff
+Departamento de Ciência da Computação
+Instituto de Matemática e Estatística da USP
