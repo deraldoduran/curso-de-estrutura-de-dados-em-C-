@@ -9,7 +9,7 @@ int fatorial (int n){
         return 1;
     } 
     else {
-        return fatorial(n-1)+fatorial(n+2);
+        return fatorial(n-1)+fatorial(n-2);
     }
     
 }
