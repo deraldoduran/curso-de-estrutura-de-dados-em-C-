@@ -1,0 +1,24 @@
+# include <iostream>
+using namespace std;
+
+int fatorial (int n){
+    if(n==0){
+        return 0;
+    } 
+    else if(n==1){
+        return 1;
+    } 
+    else {
+        return fatorial(n-1)+fatorial(n+2);
+    }
+    
+}
+
+int main(){
+    int n;
+    cin>>n;
+    
+    cout<<fatorial(n)<<endl;
+    
+    return 0;
+}
