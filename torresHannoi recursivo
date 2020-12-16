@@ -1,0 +1,29 @@
+# include <iostream>
+using namespace std;
+
+int torre(int disco, char de, char para, char aux){
+    
+    if(disco == 1){
+        cout<<de<<" -> "<<aux<<endl;
+    }else{
+        torre(disco -1, de, para, aux);
+        cout<<de<<" -> "<<para<<endl;
+         torre(disco -1, de, para, aux);
+        // cout<<aux<<" -> "<<para<<endl;
+    }
+    
+    return 0;
+}
+
+
+
+int main(){
+    char a,b,c;
+    int num;
+    cin>>num;
+    //cin>>a;
+    //cin>>b;
+    //cin>>c;
+    torre(num,'A', 'B', 'C');
+    return 0;
+}
