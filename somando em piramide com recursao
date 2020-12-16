@@ -2,16 +2,16 @@
 using namespace std;
 
 int piramide (int *v,int n){
-    int cont=5;
+    int cont=0;
     //cont =cont+ piramide (v,n-1)+piramide(v,n-2);
     if(n==1){
-        // cout<<cont<<endl;
-        return piramide(v,n-1);
-    } 
+         cout<<cont<<endl;
+        return cont;
+    } //cont //piramide(v,n-1)+piramide(v,n-2);
     else {
-       //cont =cont + piramide(v,n-1)+piramide(v,n-2);
-       cout<<piramide(v,n-1)+piramide(v,n-2)<<endl;
-        return piramide(v,n-1)+piramide(v,n-2);
+       cont =cont + piramide(v,n-1)+piramide(v,n-2);
+       cout<<cont<<endl;
+        return cont + piramide(v,n-1)+piramide(v,n-2);
     }
    // cout<<piramide(v,n);
 }
