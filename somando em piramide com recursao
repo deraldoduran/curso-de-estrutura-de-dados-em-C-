@@ -5,15 +5,16 @@ int piramide (int *v,int n){
     int cont=0;
     //cont =cont+ piramide (v,n-1)+piramide(v,n-2);
     if(n==1){
-         cout<<cont<<endl;
-        return cont;
+         cout<<v[n-1]<<endl;
+        
     } //cont //piramide(v,n-1)+piramide(v,n-2);
     else {
-       cont =cont + piramide(v,n-1)+piramide(v,n-2);
-       cout<<cont<<endl;
-        return cont + piramide(v,n-1)+piramide(v,n-2);
+       piramide(v,n-1)+piramide(v,n-2);
+       cout<<v[n-1]<<endl;
+       piramide(v,n-1)+piramide(v,n-2);
+        //return cont + piramide(v,n-1)+piramide(v,n-2);
     }
-   // cout<<piramide(v,n);
+   return 0;
 }
 
 int main(){
