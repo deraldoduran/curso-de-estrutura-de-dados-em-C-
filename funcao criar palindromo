@@ -1,0 +1,13 @@
+bool 	palindromo(char *v, int ini, int fim ){
+	if(ini>fim)
+	return true;
+	else{
+
+	if(v[ini] == v [fim]{
+	    return palindromo(v, ini +1, fim -1);
+	}else
+	return false;
+	}
+
+
+}
